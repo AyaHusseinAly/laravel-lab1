@@ -57,9 +57,17 @@ class PostController extends Controller
             'post' => $post,
         ]);
     }
-    public function update()
+    public function update($postId)
     {
-        return redirect()->route('posts.index');
+        $key = array_search($postId, array_column( $this->allPosts, 'id'));
+        $post = $this->allPosts[$key];
+        //$post = ['id' => 1, 'title' => 'laravel', 'description' => 'laravel is awsome framework', 'posted_by' => 'Ahmed', 'created_at' => '2021-03-20'];
+
+        return view('posts.show', [
+            'post' => $post,
+        ]);
+        
+        //return redirect()->route('posts.index');
     
     }
 

@@ -5,6 +5,7 @@
 @section('content')
 <form method="POST" action="{{route('posts.update',['post' => $post['id']]) }}">
     @csrf
+    @method('PUT')
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" class="form-control" id="title" aria-describedby="emailHelp" value="{{ $post['title'] }}">
@@ -20,7 +21,7 @@
       </select>
     </div>
 
-    <a type="submit" class="btn btn-success">save changes</a>
+    <button type="submit" class="btn btn-success">Update</button>
   </form>
 
 @endsection
